@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qust.mapper.tkb_ProductMapper">
+  <resultMap id="BaseResultMap" type="com.qust.model.tkb_Product">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="proname" jdbcType="VARCHAR" property="proname" />
+    <result column="prorequire" jdbcType="VARCHAR" property="prorequire" />
+    <result column="protrait" jdbcType="VARCHAR" property="protrait" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="altertime" jdbcType="TIMESTAMP" property="altertime" />
+    <result column="del" jdbcType="INTEGER" property="del" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.qust.model.tkb_Product">
+    <result column="prointro" jdbcType="LONGVARCHAR" property="prointro" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, proname, prorequire, protrait, time, altertime, del
+  </sql>
+  <sql id="Blob_Column_List">
+    prointro
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tkb_product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tkb_product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qust.model.tkb_Product">
+    insert into tkb_product (id, proname, prorequire, 
+      protrait, time, altertime, 
+      del, prointro)
+    values (#{id,jdbcType=INTEGER}, #{proname,jdbcType=VARCHAR}, #{prorequire,jdbcType=VARCHAR}, 
+      #{protrait,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, #{altertime,jdbcType=TIMESTAMP}, 
+      #{del,jdbcType=INTEGER}, #{prointro,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qust.model.tkb_Product">
+    insert into tkb_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="proname != null">
+        proname,
+      </if>
+      <if test="prorequire != null">
+        prorequire,
+      </if>
+      <if test="protrait != null">
+        protrait,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="altertime != null">
+        altertime,
+      </if>
+      <if test="del != null">
+        del,
+      </if>
+      <if test="prointro != null">
+        prointro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="proname != null">
+        #{proname,jdbcType=VARCHAR},
+      </if>
+      <if test="prorequire != null">
+        #{prorequire,jdbcType=VARCHAR},
+      </if>
+      <if test="protrait != null">
+        #{protrait,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="altertime != null">
+        #{altertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="del != null">
+        #{del,jdbcType=INTEGER},
+      </if>
+      <if test="prointro != null">
+        #{prointro,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qust.model.tkb_Product">
+    update tkb_product
+    <set>
+      <if test="proname != null">
+        proname = #{proname,jdbcType=VARCHAR},
+      </if>
+      <if test="prorequire != null">
+        prorequire = #{prorequire,jdbcType=VARCHAR},
+      </if>
+      <if test="protrait != null">
+        protrait = #{protrait,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="altertime != null">
+        altertime = #{altertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="del != null">
+        del = #{del,jdbcType=INTEGER},
+      </if>
+      <if test="prointro != null">
+        prointro = #{prointro,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.qust.model.tkb_Product">
+    update tkb_product
+    set proname = #{proname,jdbcType=VARCHAR},
+      prorequire = #{prorequire,jdbcType=VARCHAR},
+      protrait = #{protrait,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      altertime = #{altertime,jdbcType=TIMESTAMP},
+      del = #{del,jdbcType=INTEGER},
+      prointro = #{prointro,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qust.model.tkb_Product">
+    update tkb_product
+    set proname = #{proname,jdbcType=VARCHAR},
+      prorequire = #{prorequire,jdbcType=VARCHAR},
+      protrait = #{protrait,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      altertime = #{altertime,jdbcType=TIMESTAMP},
+      del = #{del,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

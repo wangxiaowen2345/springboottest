@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qust.mapper.tkb_UserMapper">
+  <resultMap id="BaseResultMap" type="com.qust.model.tkb_User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userimg" jdbcType="VARCHAR" property="userimg" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="job" jdbcType="VARCHAR" property="job" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="del" jdbcType="INTEGER" property="del" />
+    <result column="latertime" jdbcType="TIMESTAMP" property="latertime" />
+    <result column="pronum" jdbcType="INTEGER" property="pronum" />
+    <result column="lasttime" jdbcType="TIMESTAMP" property="lasttime" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="style" jdbcType="INTEGER" property="style" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userimg, username, tel, job, num, openid, time, del, latertime, pronum, lasttime, 
+    version, style, code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tkb_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tkb_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qust.model.tkb_User">
+    insert into tkb_user (id, userimg, username, 
+      tel, job, num, openid, 
+      time, del, latertime, 
+      pronum, lasttime, version, 
+      style, code)
+    values (#{id,jdbcType=INTEGER}, #{userimg,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{del,jdbcType=INTEGER}, #{latertime,jdbcType=TIMESTAMP}, 
+      #{pronum,jdbcType=INTEGER}, #{lasttime,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}, 
+      #{style,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qust.model.tkb_User">
+    insert into tkb_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userimg != null">
+        userimg,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="job != null">
+        job,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="del != null">
+        del,
+      </if>
+      <if test="latertime != null">
+        latertime,
+      </if>
+      <if test="pronum != null">
+        pronum,
+      </if>
+      <if test="lasttime != null">
+        lasttime,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="style != null">
+        style,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userimg != null">
+        #{userimg,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="del != null">
+        #{del,jdbcType=INTEGER},
+      </if>
+      <if test="latertime != null">
+        #{latertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pronum != null">
+        #{pronum,jdbcType=INTEGER},
+      </if>
+      <if test="lasttime != null">
+        #{lasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="style != null">
+        #{style,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qust.model.tkb_User">
+    update tkb_user
+    <set>
+      <if test="userimg != null">
+        userimg = #{userimg,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="del != null">
+        del = #{del,jdbcType=INTEGER},
+      </if>
+      <if test="latertime != null">
+        latertime = #{latertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pronum != null">
+        pronum = #{pronum,jdbcType=INTEGER},
+      </if>
+      <if test="lasttime != null">
+        lasttime = #{lasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="style != null">
+        style = #{style,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qust.model.tkb_User">
+    update tkb_user
+    set userimg = #{userimg,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      num = #{num,jdbcType=INTEGER},
+      openid = #{openid,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      del = #{del,jdbcType=INTEGER},
+      latertime = #{latertime,jdbcType=TIMESTAMP},
+      pronum = #{pronum,jdbcType=INTEGER},
+      lasttime = #{lasttime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=INTEGER},
+      style = #{style,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

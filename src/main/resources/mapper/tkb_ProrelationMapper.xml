@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qust.mapper.tkb_ProrelationMapper">
+  <resultMap id="BaseResultMap" type="com.qust.model.tkb_Prorelation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="proid" jdbcType="INTEGER" property="proid" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="del" jdbcType="INTEGER" property="del" />
+    <result column="latertime" jdbcType="TIMESTAMP" property="latertime" />
+    <result column="isshow" jdbcType="INTEGER" property="isshow" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, proid, userid, time, del, latertime, isshow
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tkb_prorelation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tkb_prorelation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qust.model.tkb_Prorelation">
+    insert into tkb_prorelation (id, proid, userid, 
+      time, del, latertime, 
+      isshow)
+    values (#{id,jdbcType=INTEGER}, #{proid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, 
+      #{time,jdbcType=TIMESTAMP}, #{del,jdbcType=INTEGER}, #{latertime,jdbcType=TIMESTAMP}, 
+      #{isshow,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qust.model.tkb_Prorelation">
+    insert into tkb_prorelation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="proid != null">
+        proid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="del != null">
+        del,
+      </if>
+      <if test="latertime != null">
+        latertime,
+      </if>
+      <if test="isshow != null">
+        isshow,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="proid != null">
+        #{proid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="del != null">
+        #{del,jdbcType=INTEGER},
+      </if>
+      <if test="latertime != null">
+        #{latertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isshow != null">
+        #{isshow,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qust.model.tkb_Prorelation">
+    update tkb_prorelation
+    <set>
+      <if test="proid != null">
+        proid = #{proid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="del != null">
+        del = #{del,jdbcType=INTEGER},
+      </if>
+      <if test="latertime != null">
+        latertime = #{latertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isshow != null">
+        isshow = #{isshow,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qust.model.tkb_Prorelation">
+    update tkb_prorelation
+    set proid = #{proid,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP},
+      del = #{del,jdbcType=INTEGER},
+      latertime = #{latertime,jdbcType=TIMESTAMP},
+      isshow = #{isshow,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
